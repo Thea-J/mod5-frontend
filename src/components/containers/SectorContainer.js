@@ -5,16 +5,20 @@ import { Card, Image } from "semantic-ui-react";
 
 class SectorContainer extends Component {
     renderBusinessCard = () => {
-        // return this.props.sectors.map(
-        //     (sector, index) => <BusinessCard key={index} sectorData={sector} />
+        // return this.props.businessesArray.map(
+        //     (business, index) => {
+        //     if (business.sector == sectorName) 
+        //     <BusinessCard key={index} business={business} />}
         // );
     }
 
   render() {
+    const sectorName = this.props.location.state.sectorName
+    const imgUrl = this.props.location.state.imgUrl
     return (
       <div className="sectorContainer">
-      <h1> {this.props.location.state.sectorName} </h1>
-      <Image src={this.props.location.state.imgUrl} wrapped ui={false} />
+      <h1> {sectorName} </h1>
+      <Image src={imgUrl} wrapped ui={false} />
       {/* <h1> {this.props.location.sectorDetails.imgUrl} </h1> */}
       <h3> Search & filter Here</h3>
       <h3>Businesses belonging to a sector Here</h3>
