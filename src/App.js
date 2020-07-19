@@ -3,6 +3,7 @@ import './App.css';
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import HomeContainer from "./components/containers/HomeContainer";
+import SectorContainer from "./components/containers/SectorContainer";
 import API from "./API";
 
 class App extends Component {
@@ -28,7 +29,6 @@ class App extends Component {
         }) );
     } 
 
-    //Invoked in signInPage.js line 44
     signIn = (userObj, token) => {
       this.setState({ user: userObj });
       if (token) localStorage.token = token;
@@ -37,7 +37,7 @@ class App extends Component {
     signOut = () => {
       this.setState({ user: null });
       localStorage.removeItem("token");
-      // this.props.history.push('/auth/sign-in')
+      // this.props.history.push('/sign-in')
     };
 
   render() {
@@ -65,9 +65,10 @@ class App extends Component {
   </ul>
 
   <Switch>
-  <Route exact path="/">
-    <HomeContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} />
-  </Route>
+  <Route exact path="/"> <HomeContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route>
+  <Route exact path="/businesses/:sector"   render={(routerProps) => <SectorContainer {...routerProps} />} /> 
+
+  {/* <Route exact path="/businesses/:sector"> <SectorContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route> */}
   </Switch>
 
   </>

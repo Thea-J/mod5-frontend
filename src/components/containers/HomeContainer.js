@@ -12,8 +12,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <div className="homeContainer">
-      <h3>Render the filter component here</h3>
-      <h3>Render the Sector cards here</h3>
+      <h3>Select a Sector</h3>
       {this.renderSectorCards()}
       </div>
     );
