@@ -14,7 +14,7 @@ class SectorCard extends Component {
                 pathname:`/businesses/${key}`,
                 state: {sectorName: key, imgUrl:sectors[key]}
                 }}>
-            <Image src={sectors[key]} wrapped ui={false} />
+            <Image src={sectors[key]} wrapped ui={false}  />
             </Link>
             <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
             </>)
@@ -25,7 +25,7 @@ class SectorCard extends Component {
     render() {
     return (
       <div className="sectorCard">
-      <Card>
+      <Card >
         {this.renderCard()}
       </Card>
       </div>
