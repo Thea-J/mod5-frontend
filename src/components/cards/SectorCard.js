@@ -12,14 +12,11 @@ class SectorCard extends Component {
             return (<>
             <Link to={{
                 pathname:`/businesses/${key}`,
-                // sectorDetails: {sectorName: key, imgUrl:sectors[key]}
                 state: {sectorName: key, imgUrl:sectors[key]}
-
                 }}>
-            {/* <Link to={`/businesses/${key}`} params={{ key: sectors[key] }}> */}
-            <Image src={sectors[key]} wrapped ui={false} />
-            <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
+            <Image src={sectors[key]} wrapped ui={false}  />
             </Link>
+            <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
             </>)
         } 
     }
@@ -28,7 +25,7 @@ class SectorCard extends Component {
     render() {
     return (
       <div className="sectorCard">
-      <Card>
+      <Card >
         {this.renderCard()}
       </Card>
       </div>

@@ -66,9 +66,8 @@ class App extends Component {
 
   <Switch>
   <Route exact path="/"> <HomeContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route>
-  <Route exact path="/businesses/:sector"   render={(routerProps) => <SectorContainer {...routerProps} />} /> 
+  <Route exact path="/businesses/:sector"   render={(routerProps) => <SectorContainer {...routerProps} businessesArray={this.state.businessesArray} />} /> 
 
-  {/* <Route exact path="/businesses/:sector"> <SectorContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route> */}
   </Switch>
 
   </>

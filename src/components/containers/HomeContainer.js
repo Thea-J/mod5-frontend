@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SectorCard from "../cards/SectorCard";
-// import { Link } from "react-router-dom";
+import { Header } from "semantic-ui-react";
+
 
 class HomeContainer extends Component {
     renderSectorCards = () => {
@@ -12,7 +13,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <div className="homeContainer">
-      <h3>Select a Sector</h3>
+       <Header as='h2' >Select a Sector</Header>
       {this.renderSectorCards()}
       </div>
     );
