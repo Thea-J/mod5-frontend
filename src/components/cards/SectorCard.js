@@ -4,16 +4,31 @@ import { Card, Image } from "semantic-ui-react";
 // import { Link } from "react-router-dom";
 
 class SectorCard extends Component {
+    
+    renderCard = () => {
+        const sectors = this.props.sectorData
+        for (var key in sectors) {
+            return (<>
+            <Image src={sectors[key]} wrapped ui={false} />
+            <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
+            </>)
+        } 
+    }
     render() {
+        // for (var key in sectors) {
+        // key 
+        // sectors[key]
+        //   }
         
- //Array of all the different industries
-    const listOfIndustries = [ ]
-            //Corresponding images
+
     return (
       <div className="sectorCard">
       <Card>
-        <Image src='' wrapped ui={false} />
-        <Card.Content> <Card.Header> {this.props.business.name} </Card.Header>  </Card.Content>
+        {/* {for (var key in sectors) {
+        <Image src='sectors[key]' wrapped ui={false} />
+        <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
+        }} */}
+        {this.renderCard()}
       </Card>
       </div>
     );
