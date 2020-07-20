@@ -4,6 +4,7 @@ import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import HomeContainer from "./components/containers/HomeContainer";
 import SectorContainer from "./components/containers/SectorContainer";
+import SignInContainer from "./components/containers/SignInContainer";
 import API from "./API";
 
 class App extends Component {
@@ -27,6 +28,8 @@ class App extends Component {
         businessesArray: [...this.state.businessesArray, ...businessesArray[0]],
         businessSectorObj: [...this.state.businessSectorObj, ...businessesArray[1]],
         }) );
+
+      if (localStorage.token) { API.validate().then(this.signIn); }
     } 
 
     signIn = (userObj, token) => {
@@ -47,7 +50,7 @@ class App extends Component {
     {/* {this.state.user ? ( */}
       <Menu>
       <Menu.Item> <Link to="/">Homepage</Link> </Menu.Item>
-        <Menu.Item> <Link to="/search">Search</Link> </Menu.Item>
+        {/* <Menu.Item> <Link to="/search">Search</Link> </Menu.Item> */}
         {/* <Menu.Item> <Link to={`/business_owners/${this.state.user.id}`}>Profile</Link> </Menu.Item> */}
         <Menu.Item> <Link to="/edit-profile">Edit Profile</Link> </Menu.Item>
         <Menu.Item> <Link to="/add-business">Add Business</Link> </Menu.Item>
@@ -57,7 +60,7 @@ class App extends Component {
     {/* ) : ( */}
       <Menu>
         <Menu.Item> <Link to="/">Homepage</Link> </Menu.Item>
-        <Menu.Item> <Link to="/search">Search</Link> </Menu.Item>
+        {/* <Menu.Item> <Link to="/search">Search</Link> </Menu.Item> */}
         <Menu.Item> <Link to="/sign-in">Sign In</Link> </Menu.Item>
         <Menu.Item> <Link to="/sign-up">Sign Up</Link> </Menu.Item>
       </Menu>
@@ -66,7 +69,9 @@ class App extends Component {
 
   <Switch>
   <Route exact path="/"> <HomeContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route>
-  <Route exact path="/businesses/:sector"   render={(routerProps) => <SectorContainer {...routerProps} businessesArray={this.state.businessesArray} />} /> 
+  <Route exact path="/sector/:sectorIdentifier"   render={(routerProps) => <SectorContainer {...routerProps} businessesArray={this.state.businessesArray} />} /> 
+  {/* <Route exact path="/business/:businessIdentifier"   render={(routerProps) => <BusinessContainer {...routerProps} businessesArray={this.state.businessesArray} />} />  */}
+  <Route exact path="/sign-in"> <SignInContainer signIn={this.signIn} /> </Route>
 
   </Switch>
 

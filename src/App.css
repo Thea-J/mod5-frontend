@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.sign-in-form{ 
+  text-align: center;
+}
+
+.sign-up-form{ 
+  text-align: center;
+}
