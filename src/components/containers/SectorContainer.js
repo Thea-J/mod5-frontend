@@ -4,9 +4,19 @@ import { Image, Select, Grid, Search} from "semantic-ui-react";
 // import { Link } from "react-router-dom";
 
 class SectorContainer extends Component {
+
+    // state = {
+    //     imgUrl: "",
+    //     sectorName: "",
+    // }
+
+    // componentDidMount() {
+    //     const sectorName = this.props.match.params.sectorIdentifier
+    //     fetch()
+    // }
     
  renderBusinessCard = () => {
-    const sectorName = this.props.location.state.sectorName
+        const sectorName = this.props.match.params.sectorIdentifier
     return this.props.businessesArray.map(
         (business, index) => {
        return business.sector == sectorName ?
@@ -15,8 +25,9 @@ class SectorContainer extends Component {
  }
 
   render() {
-    const sectorName = this.props.location.state.sectorName
-    const imgUrl = this.props.location.state.imgUrl
+        const sectorName = this.props.match.params.sectorIdentifier
+    // const sectorName = this.state.sectorName
+    // const imgUrl = this.props.location.state.imgUrl
     const priceOptions = [
         {key: 'af', value: 'af', text: ""},
         {key: 'af', value: 'af', text: "£"},
@@ -36,7 +47,7 @@ class SectorContainer extends Component {
     return (
       <div className="sectorContainer">
       <h1> {sectorName} </h1>
-      <Image src={imgUrl} wrapped ui={false} />
+      {/* <Image src={imgUrl} wrapped ui={false} /> */}
       <h3> Search & filter Here</h3>
       <Grid>
         <Grid.Column width={8}>

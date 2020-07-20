@@ -11,8 +11,8 @@ class SectorCard extends Component {
         for (const key in sectors) {
             return (<>
             <Link to={{
-                pathname:`/businesses/${key}`,
-                state: {sectorName: key, imgUrl:sectors[key]}
+                pathname:`/sector/${key}`,
+                // state: {sectorName: key, imgUrl:sectors[key]}
                 }}>
             <Image src={sectors[key]} wrapped ui={false}  />
             </Link>
