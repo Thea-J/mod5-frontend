@@ -13,8 +13,8 @@ class AddBusinessForm extends Component {
         country: "",
         city: "",
         price_point: "",
-        // business_owner_id: this.props.loggedInUser.id
-        business_owner_id: 1
+        business_owner_id: this.props.loggedInUser? this.props.loggedInUser.id : null
+        // business_owner_id: 1
     };
     
     addBusinessForm = () => {
