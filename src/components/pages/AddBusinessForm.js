@@ -13,14 +13,13 @@ class AddBusinessForm extends Component {
         country: "",
         city: "",
         price_point: "",
-        business_owner_id: this.props.loggedInUser? this.props.loggedInUser.id : null
-        // business_owner_id: 1
     };
     
     addBusinessForm = () => {
         return (
-          <Form className="sign-up-form" onSubmit={this.handleSubmit}>
+          <Form className="add-business-form" onSubmit={this.handleSubmit}>
             <Form.Field required>
+
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
@@ -44,6 +43,28 @@ class AddBusinessForm extends Component {
                 label="Website"
                 name="web_link"
               />
+
+            <Form.Field label='Sector' control='select' name="sector" onChange={this.handleInputChange}>
+                <option value=''>Choose a Sector</option>
+                <option value='Retail'>Retail</option>
+                <option value='Hospitality'>Hospitality</option>
+                <option value='Food & Beverage'>Food & Beverage</option>
+                <option value='I.T.'>I.T.</option>
+                <option value='Beauty'>Beauty</option>
+                <option value='Hair'>Hair</option>
+                <option value='Wellness'>Wellness</option>
+                <option value='Art'>Art</option>
+            </Form.Field>
+
+            <Form.Field label='Price Range' control='select' name="price_point" onChange={this.handleInputChange}>
+                <option value='0'></option>
+                <option value='1'>£0 - £250</option>
+                <option value='2'>£251 - £500</option>
+                <option value='3'>£551 - £700</option>
+                <option value='4'>701+</option>
+            </Form.Field>
+        
+
               <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
@@ -68,13 +89,6 @@ class AddBusinessForm extends Component {
                 name="city"
               />
 
-            <Form.Input
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Price Range"
-                label="Price Range"
-                name="price_point"
-              />
 
             <Form.TextArea
                 onChange={this.handleInputChange}
@@ -90,7 +104,11 @@ class AddBusinessForm extends Component {
         );
     };
 
-    handleInputChange = (event) => { this.setState({ [event.target.name]: event.target.value }); };
+
+    handleInputChange = (event) => { 
+    //   console.log(event.target.name)
+        this.setState({ [event.target.name]: event.target.value, business_owner_id: this.props.loggedInUser.id  }); 
+    };
     
     handleSubmit = (event) => {
         event.preventDefault();
@@ -100,6 +118,7 @@ class AddBusinessForm extends Component {
 render() {
     return (
       <div className="sign-up-form">
+      {/* {console.log(this.state.price_point)} */}
       {this.addBusinessForm()}
       </div>
     );
