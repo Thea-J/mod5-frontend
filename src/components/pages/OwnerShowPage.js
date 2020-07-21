@@ -16,31 +16,17 @@ class OwnerShowPage extends Component {
     
     componentDidMount() {
       API.fetchOwner(this.props.match.params.id)
-      .then((ownerObj) => this.setState(ownerObj ))
-          // businesses: [...this.state.businesses, ...ownerObj.businesses]}
-     
+      .then((ownerObj) => this.setState(ownerObj ))     
     }
  
     renderBusinessCards = () => {
       const businesses = this.state.businesses
-      // console.log(`businesses array in state returns1: ${JSON.stringify(businesses)}`)
-      // if (businesses !== "" )
-      // for (const business in businesses) { 
-      // console.log(`business object returns1: ${JSON.stringify(business)}`)
-      //   return (<BusinessCard business={business} />) }}
-      // {
-        // businesses.map( (business, index) => {return <BusinessCard key={index} business={business} /> })
-    // }
-    return (
-      <div>
-        {
-          businesses.map((business) => {
-            return <BusinessCard key={business.name} business={business} />;
-          })
-        }
-      </div>
-    )
-  }
+      return (
+        <div>
+          { businesses.map((business) => { return <BusinessCard key={business.name} business={business} />; })}
+        </div>
+      )
+    }
 
   render() {
     return (

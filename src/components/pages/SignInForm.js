@@ -13,16 +13,18 @@ class SignInForm extends Component {
           <Form className="sign-in-form" onSubmit={this.handleSubmit}>
             <Form.Field required>
               <Form.Input
-                onChange={this.handleUsernameChange}
+                onChange={this.handleInputChange}
                 type="text"
                 placeholder="Username"
                 label="Username"
+                name="username"
               />
               <Form.Input
-                onChange={this.handlePasswordChange}
+                onChange={this.handleInputChange}
                 type="password"
                 placeholder="Password"
                 label="Password"
+                name="password"
               />
               <Button content="Sign-in" value="Sign-in" />
             </Form.Field>
@@ -30,13 +32,7 @@ class SignInForm extends Component {
         );
     };
 
-    handleUsernameChange = (event) => {
-        this.setState({ username: event.target.value });
-    };
-    
-    handlePasswordChange = (event) => {
-        this.setState({ password: event.target.value });
-    };
+    handleInputChange = (event) => { this.setState({ [event.target.name]: event.target.value }); };
     
     handleSubmit = (event) => {
         event.preventDefault();

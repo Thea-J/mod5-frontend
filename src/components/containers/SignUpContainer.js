@@ -5,24 +5,24 @@ import SignUpForm from "../pages/SignUpForm";
 
 class SignUpContainer extends Component {
     
-    sendSignInDataToRails = (state) => {
-        // let configObj = {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Accept: "application/json",
-        //   },
-        //   body: JSON.stringify(state)
-        // };
-    
-        // return fetch("http://localhost:3000/api/v1/sign-in", configObj)
-        //   .then((resp) => resp.json())
-        //   .then((obj) => {
-        //       this.props.signIn(obj.owner, obj.token);
-        //       this.props.history.push(`/business_owners/${obj.owner.id}`);
-        //     }
-        //   )
+  sendSignUpDataToRails = (state) => {
+    let configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(state)
     };
+  
+    return fetch("http://localhost:3000/api/v1/business_owners", configObj)
+    .then((resp) => resp.json())
+    .then((obj) => {
+      console.log(`sign-up returns: ${JSON.stringify(obj.owner)}`)
+        this.props.signIn(obj.owner, obj.token);
+        this.props.history.push(`/business_owners/${obj.owner.id}`);
+    })
+  };
 
   render() {
     return (

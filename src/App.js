@@ -79,7 +79,7 @@ class App extends Component {
   <Route exact path="/businesses/:id"   render={(routerProps) => <BusinessShowPage {...routerProps}  />} /> 
   <Route exact path="/business_owners/:id"   render={(routerProps) => <OwnerShowPage {...routerProps}  />} /> 
   <Route exact path="/sign-in" render={(routerProps) => <SignInContainer {...routerProps} signIn={this.signIn} />} />
-  <Route exact path="/sign-up"> <SignUpContainer /> </Route>
+  <Route exact path="/sign-up" render={(routerProps) => <SignUpContainer {...routerProps} signIn={this.signIn} />} />
 
   </Switch>
 
