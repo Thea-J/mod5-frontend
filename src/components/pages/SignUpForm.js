@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Button } from "semantic-ui-react";
 
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
     state = {
         first_name: "",
         last_name: "",
@@ -86,4 +86,4 @@ render() {
   }
 }
 
-export default SignInForm;
+export default SignUpForm;

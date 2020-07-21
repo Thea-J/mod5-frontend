@@ -7,8 +7,10 @@ import HomeContainer from "./components/containers/HomeContainer";
 import SectorContainer from "./components/containers/SectorContainer";
 import SignInContainer from "./components/containers/SignInContainer";
 import SignUpContainer from "./components/containers/SignUpContainer";
+import AddBusinessContainer from "./components/containers/AddBusinessContainer";
 import BusinessShowPage from "./components/pages/BusinessShowPage";
 import OwnerShowPage from "./components/pages/OwnerShowPage";
+
 
 import API from "./API";
 
@@ -80,6 +82,7 @@ class App extends Component {
   <Route exact path="/business_owners/:id"   render={(routerProps) => <OwnerShowPage {...routerProps}  />} /> 
   <Route exact path="/sign-in" render={(routerProps) => <SignInContainer {...routerProps} signIn={this.signIn} />} />
   <Route exact path="/sign-up" render={(routerProps) => <SignUpContainer {...routerProps} signIn={this.signIn} />} />
+  <Route exact path="/add-business" render={(routerProps) => <AddBusinessContainer {...routerProps} loggedInUser={this.state.user} />} />
 
   </Switch>
 
