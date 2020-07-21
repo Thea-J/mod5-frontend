@@ -21,16 +21,25 @@ class OwnerShowPage extends Component {
      
     }
  
-    renderBusinessCard = (businesses) => {
-      // const businesses = this.state.businesses
+    renderBusinessCards = () => {
+      const businesses = this.state.businesses
       // console.log(`businesses array in state returns1: ${JSON.stringify(businesses)}`)
       // if (businesses !== "" )
       // for (const business in businesses) { 
       // console.log(`business object returns1: ${JSON.stringify(business)}`)
       //   return (<BusinessCard business={business} />) }}
       // {
-        businesses.map( (business, index) => {return <BusinessCard key={index} business={business} /> })
+        // businesses.map( (business, index) => {return <BusinessCard key={index} business={business} /> })
     // }
+    return (
+      <div>
+        {
+          businesses.map((business) => {
+            return <BusinessCard key={business.name} business={business} />;
+          })
+        }
+      </div>
+    )
   }
 
   render() {
@@ -58,7 +67,7 @@ class OwnerShowPage extends Component {
 
         <Grid.Row>
              //businesses
-            {this.renderBusinessCard(this.state.businesses)}
+            {this.renderBusinessCards()}
         </Grid.Row>
 
         <Grid.Row>
