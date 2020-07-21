@@ -24,7 +24,14 @@ class BusinessShowPage extends Component {
         this.setState(businessObj)
       );
     }
-
+    
+    renderPriceRangeSymbol = () => {
+      const price = this.state.price_point
+      {if (price == 1) { return <List.Content>£</List.Content>}
+      else if (price == 2) { return <List.Content>££</List.Content>}
+      else if (price == 3) { return <List.Content>£££</List.Content>}
+      else if (price == 4) { return <List.Content>££££</List.Content>}}
+    }
 
   render() {
     return (
@@ -57,7 +64,8 @@ class BusinessShowPage extends Component {
 
             <List.Item>
               <List.Icon name='money bill alternate outline' />
-              <List.Content>Price Point: {this.state.price_point}</List.Content>
+              {this.renderPriceRangeSymbol()}
+              {/* <List.Content>Price Point: {this.state.price_point}</List.Content> */}
             </List.Item>
 
             <List.Item>
