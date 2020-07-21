@@ -19,7 +19,7 @@ class SectorContainer extends Component {
         const sectorName = this.props.match.params.sectorIdentifier
     return this.props.businessesArray.map(
         (business, index) => {
-       return business.sector == sectorName ?
+       return business.sector === sectorName ?
         <BusinessCard key={index} business={business} /> : null
     })
  }

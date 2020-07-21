@@ -19,7 +19,7 @@ class SignInContainer extends Component {
       .then((resp) => resp.json())
       .then((obj) => {
           this.props.signIn(obj.owner, obj.token);
-          // this.props.history.push(`/business_owners/${obj.business_owner.id}`);
+          this.props.history.push(`/business_owners/${obj.owner.id}`);
         }
       )
     };

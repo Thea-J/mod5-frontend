@@ -10,7 +10,7 @@ class BusinessShowPage extends Component {
         name: "",
         logo: "",
         bio: "",
-        social_media: "",
+        social_media: [],
         web_link: "",
         promotions: "",
         country:"",
@@ -35,7 +35,7 @@ class BusinessShowPage extends Component {
         <Grid.Row>
           <Grid.Column width={5}>
           <Icon name='linkify' />
-            <a href={this.state.web_link} target="_blank">
+            <a href={this.state.web_link} target="_blank" rel="noopener noreferrer">
                 <Image src= {this.state.logo} wrapped ui={false}  />
             </a>
           </Grid.Column>

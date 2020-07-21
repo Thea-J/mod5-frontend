@@ -6,6 +6,7 @@ import { Menu } from "semantic-ui-react";
 import HomeContainer from "./components/containers/HomeContainer";
 import SectorContainer from "./components/containers/SectorContainer";
 import SignInContainer from "./components/containers/SignInContainer";
+import SignUpContainer from "./components/containers/SignUpContainer";
 import BusinessShowPage from "./components/pages/BusinessShowPage";
 import OwnerShowPage from "./components/pages/OwnerShowPage";
 
@@ -78,6 +79,7 @@ class App extends Component {
   <Route exact path="/businesses/:id"   render={(routerProps) => <BusinessShowPage {...routerProps}  />} /> 
   <Route exact path="/business_owners/:id"   render={(routerProps) => <OwnerShowPage {...routerProps}  />} /> 
   <Route exact path="/sign-in"> <SignInContainer signIn={this.signIn} /> </Route>
+  <Route exact path="/sign-up"> <SignUpContainer /> </Route>
 
   </Switch>
 
