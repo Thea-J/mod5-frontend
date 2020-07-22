@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SectorCard from "../cards/SectorCard";
-import { Header } from "semantic-ui-react";
+import { Header, Grid } from "semantic-ui-react";
 
 
 class HomeContainer extends Component {
@@ -14,7 +14,9 @@ class HomeContainer extends Component {
     return (
       <div className="homeContainer">
        <Header as='h2' >Select a Sector</Header>
+       <Grid container columns={3}>
       {this.renderSectorCards()}
+      </Grid>
       </div>
     );
   }

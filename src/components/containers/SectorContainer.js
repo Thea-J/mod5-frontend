@@ -1,63 +1,91 @@
 import React, { Component } from "react";
-import BusinessCard from "../cards/BusinessCard";
-import { Image, Select, Grid, Search} from "semantic-ui-react";
-// import { Link } from "react-router-dom";
+import SearchResultsContainer from "./SearchResultsContainer";
+import API from "../../API";
+import { Image, Form, Grid, Header } from "semantic-ui-react";
 
 class SectorContainer extends Component {
 
-    // state = {
+    state = {
+      searchTerm: "",
+      filteredBusinesses: [],
+      city: "",
+      price_point: "",
     //     imgUrl: "",
-    //     sectorName: "",
-    // }
+    }
 
-    // componentDidMount() {
-    //     const sectorName = this.props.match.params.sectorIdentifier
-    //     fetch()
-    // }
+    componentDidMount() {
+      API.fetchBusinessesArray()
+      .then((businessesArray) => this.setState({ 
+        filteredBusinesses: [...this.state.filteredBusinesses, ...businessesArray[0]],
+      }) 
+      );
+    }
     
- renderBusinessCard = () => {
-        const sectorName = this.props.match.params.sectorIdentifier
-    return this.props.businessesArray.map(
-        (business, index) => {
-       return business.sector === sectorName ?
-        <BusinessCard key={index} business={business} /> : null
-    })
- }
+    updateSearchTerm = (event) => {
+      this.setState({ searchTerm: event.target.value });
+    };
+
+    filterBusinessByName = () => {
+      return this.state.filteredBusinesses.filter((business) =>
+      business.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      );
+    };
+
+    handleSearchChange = (event) => {
+      this.updateSearchTerm(event);
+    };
+
+    handleInputChange = (event) => { 
+          this.setState({ [event.target.name]: event.target.value }); 
+      };
 
   render() {
-        const sectorName = this.props.match.params.sectorIdentifier
-    // const sectorName = this.state.sectorName
+    const sectorName = this.props.match.params.sectorIdentifier
     // const imgUrl = this.props.location.state.imgUrl
-    const priceOptions = [
-        {key: 'af', value: 'af', text: ""},
-        {key: 'af', value: 'af', text: "£"},
-        {key: 'af', value: 'af', text: "££" },
-        {key: 'af', value: 'af', text: "£££" },
-        {key: 'af', value: 'af', text: "££££" }
-    ]
-
-    const cityOptions = [
-        {key: 'af', value: 'ldn', text: "London"},
-        {key: 'af', value: 'exe', text: "Exeter"},
-        {key: 'af', value: 'bris', text: "Bristol" },
-        {key: 'af', value: 'birm', text: "Birmingham" },
-        {key: 'af', value: 'lei', text: "Leicester" }
-    ]
 
     return (
       <div className="sectorContainer">
       <h1> {sectorName} </h1>
       {/* <Image src={imgUrl} wrapped ui={false} /> */}
-      <h3> Search & filter Here</h3>
+      <Header as='h2' >Search & filter Here</Header>
+      <Form>
       <Grid>
-        <Grid.Column width={8}>
-          <Search/>
+        <Grid.Column width={3}>
+          <Form.Field inline >
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Name of Business"
+              onChange={this.handleSearchChange}
+            ></input>
+          </Form.Field>
         </Grid.Column>
+
+        <Grid.Column width={2}>              
+        <Form.Field label='Price Range' control='select' name="price_point" onChange={this.handleInputChange}>
+                <option value='0'></option>
+                <option value='1'>£</option>
+                <option value='2'>££</option>
+                <option value='3'>£££</option>
+                <option value='4'>££££</option>
+            </Form.Field>
+            </Grid.Column>
+
+        <Grid.Column width={2}> 
+        <Form.Field label='City' control='select' name="city" onChange={this.handleInputChange}>
+                <option value='0'></option>
+                <option value='ldn'>London</option>
+                <option value='exe'>Exeter</option>
+                <option value='bris'>Bristol</option>
+                <option value='birms'>Birmingham</option>
+                <option value='lei'>Leicester</option>
+            </Form.Field>
+        </Grid.Column>
+
         </Grid>
-      <Select placeholder='Price Point' options={priceOptions} />
-      <Select placeholder='City' options={cityOptions} />
-      <h3>Businesses belonging to a sector Here</h3>
-      {this.renderBusinessCard()}
+        </Form>
+      <h2> Practice search results</h2>
+      <SearchResultsContainer sectorName = {this.props.match.params.sectorIdentifier} businessesArray={this.state.filteredBusinesses} businesses={this.filterBusinessByName()} city={this.state.city} price={this.state.price_point} />
       </div>
     );
   }

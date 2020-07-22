@@ -58,7 +58,6 @@ class App extends Component {
     {this.state.user ? (
       <Menu>
       <Menu.Item> <Link to="/">Homepage</Link> </Menu.Item>
-        {/* <Menu.Item> <Link to="/search">Search</Link> </Menu.Item> */}
         <Menu.Item> <Link to={`/business_owners/${this.state.user.id}`}>Profile</Link> </Menu.Item>
         <Menu.Item> <Link to="/edit-profile">Edit Profile</Link> </Menu.Item>
         <Menu.Item> <Link to="/add-business">Add Business</Link> </Menu.Item>
@@ -68,7 +67,6 @@ class App extends Component {
     ) : (
       <Menu>
         <Menu.Item> <Link to="/">Homepage</Link> </Menu.Item>
-        {/* <Menu.Item> <Link to="/search">Search</Link> </Menu.Item> */}
         <Menu.Item> <Link to="/sign-in">Sign In</Link> </Menu.Item>
         <Menu.Item> <Link to="/sign-up">Sign Up</Link> </Menu.Item>
       </Menu>
@@ -77,7 +75,7 @@ class App extends Component {
 
   <Switch>
   <Route exact path="/"> <HomeContainer businessesArray={this.state.businessesArray} sectors={this.state.businessSectorObj} /> </Route>
-  <Route exact path="/sector/:sectorIdentifier"   render={(routerProps) => <SectorContainer {...routerProps} businessesArray={this.state.businessesArray} />} /> 
+  <Route exact path="/sector/:sectorIdentifier"   render={(routerProps) => <SectorContainer {...routerProps} />} /> 
   <Route exact path="/businesses/:id"   render={(routerProps) => <BusinessShowPage {...routerProps}  />} /> 
   <Route exact path="/business_owners/:id"   render={(routerProps) => <OwnerShowPage {...routerProps}  />} /> 
   <Route exact path="/sign-in" render={(routerProps) => <SignInContainer {...routerProps} signIn={this.signIn} />} />
