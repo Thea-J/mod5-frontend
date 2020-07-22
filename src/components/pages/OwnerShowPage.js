@@ -11,7 +11,7 @@ class OwnerShowPage extends Component {
       profile_picture: "",
       bio: "",
       businesses: [],
-      social_media: []
+      social_media: ""
     };
     
     componentDidMount() {
@@ -31,15 +31,15 @@ class OwnerShowPage extends Component {
   render() {
     return (
       <div className="owner-show-page">
-       <Header as='h2' >Owner {this.state.first_name} {this.state.last_name}ShowW Page</Header>
+       <Header as='h2' > {this.state.first_name} {this.state.last_name}</Header>
 
        <Grid celled='internally'>
         <Grid.Row>
           <Grid.Column width={5}>
           <Icon name='linkify' />
-            {/* <a href={this.state.web_link} target="_blank"> */}
+            <a href={this.state.social_media} target="_blank">
                 <Image src= {this.state.profile_picture} wrapped ui={false}  />
-            {/* </a> */}
+            </a>
           </Grid.Column>
 
           <Grid.Column width={5}>
@@ -50,16 +50,15 @@ class OwnerShowPage extends Component {
             </List>
           </Grid.Column>
         </Grid.Row>
-
-        <Grid.Row>
-             //businesses
+        <Grid.Row >
+        <Header as='h3' > Businesses: </Header>
             {this.renderBusinessCards()}
         </Grid.Row>
 
-        <Grid.Row>
+        {/* <Grid.Row>
             //social media
             {this.state.social_media}
-        </Grid.Row>
+        </Grid.Row> */}
        </Grid>
 
       </div>

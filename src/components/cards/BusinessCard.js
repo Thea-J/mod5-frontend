@@ -11,7 +11,7 @@ class BusinessCard extends Component {
             <Link to={`/businesses/${this.props.business.id}`}>
             <Image src={business.logo} wrapped ui={false} />
             </Link>
-            <Card.Content> <Card.Header> {this.props.business.name} | Owner </Card.Header>  </Card.Content>
+            <Card.Content> <Card.Header> {this.props.business.name} </Card.Header>  </Card.Content>
         </>
     }
 

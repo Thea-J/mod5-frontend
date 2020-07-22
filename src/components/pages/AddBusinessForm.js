@@ -61,7 +61,7 @@ class AddBusinessForm extends Component {
                 <option value='1'>£0 - £250</option>
                 <option value='2'>£251 - £500</option>
                 <option value='3'>£551 - £700</option>
-                <option value='4'>701+</option>
+                <option value='4'>£701+</option>
             </Form.Field>
         
 
