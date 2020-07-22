@@ -8,12 +8,10 @@ import { Grid} from "semantic-ui-react";
     return this.props.businesses.map(
         (business, index) => {
             {if (this.props.city) {
-              return "city selected"
-                  // return business.sector === this.props.sectorName && business.city === this.props.city? <BusinessCard key={index} business={business} /> : null 
+                  return business.sector === this.props.sectorName && business.city === this.props.city? <BusinessCard key={index} business={business} /> : null 
                 }
             else if (this.props.price) { 
-              return "price selected"
-                  // return business.sector === this.props.sectorName && business.price_point === this.props.price? <BusinessCard key={index} business={business} /> : null 
+                  return business.sector === this.props.sectorName && business.price_point === this.props.price? <BusinessCard key={index} business={business} /> : null 
                }
             else{ return business.sector === this.props.sectorName ? <BusinessCard key={index} business={business} /> : null }}}
         // return business.sector === this.props.sectorName ? <BusinessCard key={index} business={business} /> : null }

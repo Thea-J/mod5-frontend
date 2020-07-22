@@ -36,7 +36,7 @@ class SectorContainer extends Component {
     };
 
     handleInputChange = (event) => { 
-          this.setState({ [event.target.name]: event.target.value }); 
+          this.setState({ [event.target.name]: event.target.value }, () => console.log(this.state.price_point)); 
       };
 
   render() {
