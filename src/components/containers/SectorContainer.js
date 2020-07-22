@@ -74,17 +74,16 @@ class SectorContainer extends Component {
         <Grid.Column width={2}> 
         <Form.Field label='City' control='select' name="city" onChange={this.handleInputChange}>
                 <option value='0'></option>
-                <option value='ldn'>London</option>
-                <option value='exe'>Exeter</option>
-                <option value='bris'>Bristol</option>
-                <option value='birms'>Birmingham</option>
-                <option value='lei'>Leicester</option>
+                <option value='London'>London</option>
+                <option value='Exeter'>Exeter</option>
+                <option value='Bristol'>Bristol</option>
+                <option value='Birmingham'>Birmingham</option>
+                <option value='Leicester'>Leicester</option>
             </Form.Field>
         </Grid.Column>
-
         </Grid>
         </Form>
-      <h2> Practice search results</h2>
+        <br></br>
       <SearchResultsContainer sectorName = {this.props.match.params.sectorIdentifier} businessesArray={this.state.filteredBusinesses} businesses={this.filterBusinessByName()} city={this.state.city} price={this.state.price_point} />
       </div>
     );

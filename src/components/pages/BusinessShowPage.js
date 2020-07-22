@@ -57,7 +57,7 @@ class BusinessShowPage extends Component {
               <List.Icon name='address book outline' />
               <List.Content>
                 <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
-                        By:  //owner_name //make this a label w/ the owners profile picture
+                        By:  //owner_name
                 </Link>
               </List.Content>
             </List.Item>
@@ -71,22 +71,21 @@ class BusinessShowPage extends Component {
             <List.Item>
               <List.Icon name='point' />
               <List.Content>
-                Location: {this.state.country}, {this.state.city}
-                //Add full address to business table in db
+                {this.state.country}, {this.state.city}
               </List.Content>
             </List.Item>
             </List>
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row>
+        {/* <Grid.Row>
              //promo
             {this.state.promotions}
         </Grid.Row>
         <Grid.Row>
             //social media
             {this.state.social_media}
-        </Grid.Row>
+        </Grid.Row> */}
        </Grid>
 
     </div>

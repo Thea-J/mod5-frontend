@@ -27,7 +27,6 @@ class SignUpContainer extends Component {
   render() {
     return (
       <div className="sign-up-container">
-       <Header as='h2' >Sign Up Container</Header>
        <Card centered>
           <Card.Content extra>
             <Icon name="" />
