@@ -16,13 +16,17 @@ class BusinessShowPage extends Component {
         country:"",
         city:"",
         price_point: "",
-        business_owner_id: ""
+        business_owner_id: "",
+        business_owner_obj: []
     };
     
     componentDidMount() {
       API.fetchBusiness(this.props.match.params.id).then((businessObj) =>
         this.setState(businessObj)
       );
+      API.fetchOwner(this.state.business_owner_id)
+      .then((obj) => this.setState({business_owner_obj: [...this.state.business_owner_obj, ...obj]})
+    );
     }
     
     renderPriceRangeSymbol = () => {
@@ -31,6 +35,10 @@ class BusinessShowPage extends Component {
       else if (price == 2) { return <List.Content>££</List.Content>}
       else if (price == 3) { return <List.Content>£££</List.Content>}
       else if (price == 4) { return <List.Content>££££</List.Content>}}
+    }
+
+    owner_name = () => { 
+      return parseInt(this.state.business_owner_id) === this.state.business_owner_obj.id ? this.state.business_owner_obj.first_name : null
     }
 
   render() {
@@ -57,7 +65,7 @@ class BusinessShowPage extends Component {
               <List.Icon name='address book outline' />
               <List.Content>
                 <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
-                        By:  //owner_name
+                        By:  //owner_name {this.owner_name()}
                 </Link>
               </List.Content>
             </List.Item>

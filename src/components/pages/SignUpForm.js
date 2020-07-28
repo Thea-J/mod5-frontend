@@ -48,12 +48,20 @@ class SignUpForm extends Component {
                 name="password_digest"
               />
 
-            <Form.Input
+            {/* <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Profile Picture"
                 label="Profile Picture"
                 name="profile_picture"
+              /> */}
+
+          <Form.Input
+                onChange={this.uploadImg}
+                type="file"
+                placeholder="Img  upload practice"
+                label="Profile Picture"
+                name="file"
               />
 
             <Form.TextArea
@@ -72,6 +80,22 @@ class SignUpForm extends Component {
 
     handleInputChange = (event) => { this.setState({ [event.target.name]: event.target.value }); };
     
+    uploadImg = (event) => {
+      const files = event.target.files
+      const data = new FormData()
+      data.append("file", files[0])
+      data.append("upload_preset", "mod5frontend")
+      fetch(
+        "https://api.cloudinary.com/v1_1/thea-j/image/upload", 
+        {
+          method: "POST",
+          body: data
+        }
+      )
+      .then((resp) => resp.json())
+      .then((obj) => this.setState({ profile_picture: obj.secure_url}))
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.sendSignUpDataToRails(this.state);

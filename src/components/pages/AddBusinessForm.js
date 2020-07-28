@@ -28,12 +28,11 @@ class AddBusinessForm extends Component {
                 name="name"
               />
 
-            <Form.Input
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Logo URL"
+              <Form.Input
+                onChange={this.uploadImg}
+                type="file"
                 label="Logo"
-                name="logo"
+                name="file"
               />
 
               <Form.Input
@@ -109,6 +108,22 @@ class AddBusinessForm extends Component {
     //   console.log(event.target.name)
         this.setState({ [event.target.name]: event.target.value, business_owner_id: this.props.loggedInUser.id  }); 
     };
+
+    uploadImg = (event) => {
+      const files = event.target.files
+      const data = new FormData()
+      data.append("file", files[0])
+      data.append("upload_preset", "mod5frontend")
+      fetch(
+        "https://api.cloudinary.com/v1_1/thea-j/image/upload", 
+        {
+          method: "POST",
+          body: data
+        }
+      )
+      .then((resp) => resp.json())
+      .then((obj) => this.setState({ logo: obj.secure_url}))
+    }
     
     handleSubmit = (event) => {
         event.preventDefault();

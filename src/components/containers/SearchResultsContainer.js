@@ -11,7 +11,9 @@ import { Grid} from "semantic-ui-react";
                   return business.sector === this.props.sectorName && business.city === this.props.city? <BusinessCard key={index} business={business} /> : null 
                 }
             else if (this.props.price) { 
-                  return business.sector === this.props.sectorName && business.price_point === this.props.price? <BusinessCard key={index} business={business} /> : null 
+              // console.log(`Chosen price: ${JSON.stringify(this.props.price)}`)
+              // console.log(`business(s) price: ${JSON.stringify(business.price_point)}`)
+                  return business.sector === this.props.sectorName && business.price_point === parseInt(this.props.price)? <BusinessCard key={index} business={business} /> : null 
                }
             else{ return business.sector === this.props.sectorName ? <BusinessCard key={index} business={business} /> : null }}}
         // return business.sector === this.props.sectorName ? <BusinessCard key={index} business={business} /> : null }
