@@ -65,13 +65,6 @@ class AddBusinessForm extends Component {
             </Form.Field>
           </Form.Group>
 
-              <Form.Input
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Promotions"
-                label="Promotions"
-                name="promotions"
-              />
 
           <Form.Group widths='equal'>  
             <Form.Input
@@ -99,6 +92,13 @@ class AddBusinessForm extends Component {
                 name="bio"
               />
 
+              <Form.Input
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Promotions"
+                label="Promotions"
+                name="promotions"
+              />
               <Button content="Add Business" value="Add-Business" />
             </Form.Field>
           </Form>

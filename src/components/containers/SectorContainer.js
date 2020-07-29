@@ -11,33 +11,8 @@ class SectorContainer extends Component {
       city: "",
       price_point: "",
       businessSectorObj: [],
-      imgUrl: "",
     }
-
-    findSectorImg = () => {
-    const sectorName = this.props.match.params.sectorIdentifier
-    const sectorObj =this.state.businessSectorObj
-    for (const key in sectorObj)
-    // {console.log(sectorObj[key].sectorName)}  
-   {if (sectorObj[key].hasOwnProperty(sectorName)) {
-         {console.log(sectorObj[key].sectorName)}  
-    }}
-  //  {return sectorObj[key].hasOwnProperty(sectorName) ? this.setState({imgUrl: sectorObj[key].sectorName}) : null}
-    // {if (sectorName==key) {this.setState({imgUrl: sector.sectorName})}}
-    // $sectorobj[0].Retail returns img url
-    //$sectorobj[0]retunrs sector name?
-    // array1.forEach(element => console.log(element));
-
-    // function getKeyByValue(object, value) {
-    //   return Object.keys(object).find(key => object[key] === value);
-    // }
-
-    // function getValue(object, name) {
-    //   return Object.keys(object).find(key => object[key] === name);
-    // }
-    
-    }
-
+  
 
     componentDidMount() {
       API.fetchBusinessesArray()
@@ -46,6 +21,18 @@ class SectorContainer extends Component {
         businessSectorObj: [...this.state.businessSectorObj, ...businessesArray[1]],
       }) 
       );
+    }
+
+    findSectorImg = () => {
+      const sectorName = this.props.match.params.sectorIdentifier
+      const sectorArray =this.state.businessSectorObj
+
+      return sectorArray.map(
+      (sectorObj, index) => {
+       if (sectorObj.sector === sectorName)  {
+       return <Image src={sectorObj.imgUrl} wrapped ui={false}  />}
+       }
+       );
     }
     
     updateSearchTerm = (event) => {
@@ -67,14 +54,13 @@ class SectorContainer extends Component {
       };
 
   render() {
+    const sectorObj =this.state.businessSectorObj
     const sectorName = this.props.match.params.sectorIdentifier
-    // const imgUrl = this.props.location.state.imgUrl
 
     return (
       <div className="sectorContainer">
       <Header as='h2' >{sectorName}</Header>
       {this.findSectorImg()}
-      {/* <Image src={imgUrl} wrapped ui={false} /> */}
       <Form >
       <Grid centered>
         <Grid.Row width={2}>

@@ -28,7 +28,7 @@ class SignInContainer extends Component {
     return (
       <div className="sign-in-container">
         <Card centered>
-          <Card.Content extra>
+          <Card.Content extra >
             <Icon name="sign-in" />
           </Card.Content>
           <Card.Content header="Enter Your log-in details" />

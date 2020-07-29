@@ -7,17 +7,18 @@ class SectorCard extends Component {
     
 
     renderCard = () => {
-        const sectors = this.props.sectorData
-        for (const key in sectors) {
+        const sectorObj = this.props.sectorData
+        for (const key in sectorObj) {
             return (<>
-            {/* {console.log(sectors)} */}
+            {/* {console.log(sectorObj)}
+            {console.log(sectorObj.sector)} */}
             <Link to={{
-                pathname:`/sector/${key}`,
-                // state: {sectorName: key, imgUrl:sectors[key]}
+                pathname:`/sector/${sectorObj.sector}`,
+                // state: {sectorName: key, imgUrl:sectorObj[key]}
                 }}>
-            <Image src={sectors[key]} wrapped ui={false}  />
+            <Image src={sectorObj.imgUrl} wrapped ui={false}  />
             </Link>
-            <Card.Content> <Card.Header> {key} </Card.Header>  </Card.Content>
+            <Card.Content> <Card.Header> {sectorObj.sector} </Card.Header>  </Card.Content>
             </>)
         } 
     }

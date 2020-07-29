@@ -6,14 +6,14 @@ import { Header, Grid } from "semantic-ui-react";
 class HomeContainer extends Component {
     renderSectorCards = () => {
         return this.props.sectors.map(
-            (sector, index) => <SectorCard key={index} sectorData={sector} />
+          (sectorObj, index) => <SectorCard key={index} sectorData={sectorObj} />
         );
     }
 
   render() {
     return (
       <div className="homeContainer">
-      <Header as='h2' >Welcome, Select a Sector!</Header>
+      <Header as='h2' >Welcome, Choose a Sector!</Header>
        <Grid container columns={3} centered>
       {this.renderSectorCards()}
       </Grid>
