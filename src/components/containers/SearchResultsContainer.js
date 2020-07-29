@@ -24,7 +24,7 @@ import { Grid} from "semantic-ui-react";
   render() {
     return (
       <div className="search-results-container">
-        <Grid container columns={3}>
+        <Grid container columns={3} centered>
           {this.renderBusinessCard()}
         </Grid>
       </div>

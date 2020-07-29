@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SearchResultsContainer from "./SearchResultsContainer";
 import API from "../../API";
-import { Image, Form, Grid, Header } from "semantic-ui-react";
+import { Image, Form, Grid, Header, Label, Icon } from "semantic-ui-react";
 
 class SectorContainer extends Component {
 
@@ -10,13 +10,40 @@ class SectorContainer extends Component {
       filteredBusinesses: [],
       city: "",
       price_point: "",
-    //     imgUrl: "",
+      businessSectorObj: [],
+      imgUrl: "",
     }
+
+    findSectorImg = () => {
+    const sectorName = this.props.match.params.sectorIdentifier
+    const sectorObj =this.state.businessSectorObj
+    for (const key in sectorObj)
+    // {console.log(sectorObj[key].sectorName)}  
+   {if (sectorObj[key].hasOwnProperty(sectorName)) {
+         {console.log(sectorObj[key].sectorName)}  
+    }}
+  //  {return sectorObj[key].hasOwnProperty(sectorName) ? this.setState({imgUrl: sectorObj[key].sectorName}) : null}
+    // {if (sectorName==key) {this.setState({imgUrl: sector.sectorName})}}
+    // $sectorobj[0].Retail returns img url
+    //$sectorobj[0]retunrs sector name?
+    // array1.forEach(element => console.log(element));
+
+    // function getKeyByValue(object, value) {
+    //   return Object.keys(object).find(key => object[key] === value);
+    // }
+
+    // function getValue(object, name) {
+    //   return Object.keys(object).find(key => object[key] === name);
+    // }
+    
+    }
+
 
     componentDidMount() {
       API.fetchBusinessesArray()
       .then((businessesArray) => this.setState({ 
         filteredBusinesses: [...this.state.filteredBusinesses, ...businessesArray[0]],
+        businessSectorObj: [...this.state.businessSectorObj, ...businessesArray[1]],
       }) 
       );
     }
@@ -45,13 +72,14 @@ class SectorContainer extends Component {
 
     return (
       <div className="sectorContainer">
-      <h1> {sectorName} </h1>
+      <Header as='h2' >{sectorName}</Header>
+      {this.findSectorImg()}
       {/* <Image src={imgUrl} wrapped ui={false} /> */}
-      <Header as='h2' >Search & filter Here</Header>
-      <Form>
-      <Grid>
-        <Grid.Column width={3}>
-          <Form.Field inline >
+      <Form >
+      <Grid centered>
+        <Grid.Row width={2}>
+          <Form.Field inline>
+          <Label> <Icon name='search'/> Search </Label>
             <input
               type="text"
               className="search-bar"
@@ -59,7 +87,7 @@ class SectorContainer extends Component {
               onChange={this.handleSearchChange}
             ></input>
           </Form.Field>
-        </Grid.Column>
+        </Grid.Row>
 
         <Grid.Column width={2}>              
         <Form.Field label='Price Range' control='select' name="price_point" onChange={this.handleInputChange}>

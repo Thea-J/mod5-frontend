@@ -38,8 +38,11 @@ class BusinessShowPage extends Component {
     }
 
     owner_name = () => { 
-      return parseInt(this.state.business_owner_id) === this.state.business_owner_obj.id ? this.state.business_owner_obj.first_name : null
+      const ownerObj = this.state.business_owner_obj
+      for (const owner of ownerObj)
+      {if (this.state.business_owner_id == owner.id) {return <p> By: {owner.first_name} </p>}}
     }
+
 
   render() {
     return (
@@ -61,14 +64,6 @@ class BusinessShowPage extends Component {
               <List.Content>{this.state.bio}</List.Content>
             </List.Item>
            
-            <List.Item>
-              <List.Icon name='address book outline' />
-              <List.Content>
-                <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
-                        By:  //owner_name {this.owner_name()}
-                </Link>
-              </List.Content>
-            </List.Item>
 
             <List.Item>
               <List.Icon name='money bill alternate outline' />
@@ -82,6 +77,16 @@ class BusinessShowPage extends Component {
                 {this.state.country}, {this.state.city}
               </List.Content>
             </List.Item>
+
+            <List.Item>
+              <List.Icon name='address book outline' />
+              <List.Content>
+                <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
+                      {this.owner_name()}
+                </Link>
+              </List.Content>
+            </List.Item>
+            
             </List>
           </Grid.Column>
         </Grid.Row>

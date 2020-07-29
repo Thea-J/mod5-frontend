@@ -10,6 +10,7 @@ class SectorCard extends Component {
         const sectors = this.props.sectorData
         for (const key in sectors) {
             return (<>
+            {/* {console.log(sectors)} */}
             <Link to={{
                 pathname:`/sector/${key}`,
                 // state: {sectorName: key, imgUrl:sectors[key]}

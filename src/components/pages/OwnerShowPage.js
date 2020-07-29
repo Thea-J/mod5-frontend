@@ -37,7 +37,7 @@ class OwnerShowPage extends Component {
         <Grid.Row>
           <Grid.Column width={5}>
           <Icon name='linkify' />
-            <a href={this.state.social_media} target="_blank">
+            <a href={this.state.social_media} target="_blank"  rel="noopener noreferrer">
                 <Image src= {this.state.profile_picture} wrapped ui={false}  />
             </a>
           </Grid.Column>
