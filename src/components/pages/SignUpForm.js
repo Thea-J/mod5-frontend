@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Segment, Label } from "semantic-ui-react";
 
 
 class SignUpForm extends Component {
@@ -15,39 +15,49 @@ class SignUpForm extends Component {
     
     signUpForm = () => {
         return (
-          <Form className="sign-up-form" onSubmit={this.handleSubmit}>
+          <Segment > 
+          <Form className="sign-up-form" onSubmit={this.handleSubmit} >
             <Form.Field required>
             <Form.Group widths='equal'>
+            <Label as='a' color='teal' > First Name </Label>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="First Name"
-                label="First Name"
                 name="first_name"
               />
 
+<Label as='a' color='teal' > Last Name </Label>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Last Name"
-                label="Last Name"
                 name="last_name"
               />
             </Form.Group>
 
+            <Label as='a' color='black' > Profile Picture </Label>
+          <Form.Input
+                onChange={this.uploadImg}
+                type="file"
+                placeholder="Img  upload practice"
+                name="file"
+              />
+
             <Form.Group widths='equal'> 
+<Label as='a' color='teal' > Username </Label>
               <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Username"
-                label="Username"
                 name="username"
               />
+
+<Label as='a' color='teal' > Password </Label>
               <Form.Input
                 onChange={this.handleInputChange}
                 type="password"
                 placeholder="Password"
-                label="Password"
                 name="password_digest"
               />
               </Form.Group>
@@ -59,25 +69,19 @@ class SignUpForm extends Component {
                 name="profile_picture"
               /> */}
 
-          <Form.Input
-                onChange={this.uploadImg}
-                type="file"
-                placeholder="Img  upload practice"
-                label="Profile Picture"
-                name="file"
-              />
 
+            <Label as='a' color='black' > About </Label>
             <Form.TextArea
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Tell us more about you.."
-                label="About"
                 name="bio"
               />
 
-              <Button content="Sign-up" value="Sign-up" />
+              <Button content="Sign-up" value="Sign-up" color='teal' />
             </Form.Field>
           </Form>
+          </Segment>
         );
     };
 

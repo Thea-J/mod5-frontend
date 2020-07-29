@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../API";
-import { Header, Image, Grid, List, Icon } from "semantic-ui-react";
+import { Header, Image, Grid, List, Icon, Divider } from "semantic-ui-react";
 import BusinessCard from "../cards/BusinessCard";
 
 
@@ -47,6 +47,8 @@ class OwnerShowPage extends Component {
         {/* <Header as='h3' > Businesses: </Header> */}
             {/* {this.renderBusinessCards()} */}
         {/* </Grid.Column> */}
+        {/* <Divider horizontal>  <Header as='h2' >Businesses</Header> </Divider> */}
+
         <Grid.Row container width={5}>
         {this.renderBusinessCards()}
         </Grid.Row>

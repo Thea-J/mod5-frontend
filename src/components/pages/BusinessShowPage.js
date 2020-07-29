@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../API";
-import { Header, Image, Grid, List, Icon } from "semantic-ui-react";
+import { Header, Image, Grid, List, Icon, Label, Divider } from "semantic-ui-react";
 import {Link} from "react-router-dom";
 
 
@@ -47,16 +47,23 @@ class BusinessShowPage extends Component {
   render() {
     return (
       <div className="business-show-page">
-       <Header as='h2'>{this.state.name}</Header>
 
        <Grid celled='internally' centered >
         <Grid.Row>
-          <Grid.Column width={5}>
+          {/* <Grid.Column width={5}> */}
           <Icon name='linkify' />
             <a href={this.state.web_link} target="_blank" rel="noopener noreferrer">
                 <Image src= {this.state.logo} wrapped ui={false}  />
             </a>
-          </Grid.Column>
+          {/* </Grid.Column> */}
+
+        <Divider vertical>  
+          <Header as='h2' >{this.state.name} </Header>
+          <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
+            <Label as='a' color='blue' > {this.owner_name()} </Label>                
+          </Link>
+        </Divider>
+
           <Grid.Column width={5}>
 
           <List>
@@ -78,14 +85,7 @@ class BusinessShowPage extends Component {
               </List.Content>
             </List.Item>
 
-            <List.Item>
-              <List.Icon name='address book outline' />
-              <List.Content>
-                <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
-                      {this.owner_name()}
-                </Link>
-              </List.Content>
-            </List.Item>
+      
             
             </List>
           </Grid.Column>

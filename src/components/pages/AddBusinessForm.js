@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Segment, Label } from "semantic-ui-react";
 
 
 class AddBusinessForm extends Component {
@@ -17,34 +17,37 @@ class AddBusinessForm extends Component {
     
     addBusinessForm = () => {
         return (
+          <Segment > 
           <Form className="add-business-form" onSubmit={this.handleSubmit}>
             <Form.Field required>
-
+            
+            <Label as='a' color='teal' > Business Name </Label>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Business Name"
-                label="Business Name"
                 name="name"
               />
 
+            <Label as='a' color='teal' > Logo </Label>
               <Form.Input
                 onChange={this.uploadImg}
                 type="file"
-                label="Logo"
                 name="file"
               />
 
+            <Label as='a' color='teal' > Website </Label>
               <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Website URL"
-                label="Website"
                 name="web_link"
               />
 
           <Form.Group widths='equal'> 
-            <Form.Field label='Sector' control='select' name="sector" onChange={this.handleInputChange}>
+
+          <Label as='a' color='black' > Sector </Label>
+            <Form.Field control='select' name="sector" onChange={this.handleInputChange}>
                 <option value=''>Choose a Sector</option>
                 <option value='Retail'>Retail</option>
                 <option value='Hospitality'>Hospitality</option>
@@ -56,8 +59,9 @@ class AddBusinessForm extends Component {
                 <option value='Art'>Art</option>
             </Form.Field>
 
-            <Form.Field label='Price Range' control='select' name="price_point" onChange={this.handleInputChange}>
-                <option value='0'></option>
+          <Label as='a' color='black' > Price Range </Label>
+            <Form.Field control='select' name="price_point" onChange={this.handleInputChange}>
+                <option value='0'>Choose a Price Range</option>
                 <option value='1'>£0 - £250</option>
                 <option value='2'>£251 - £500</option>
                 <option value='3'>£551 - £700</option>
@@ -66,42 +70,43 @@ class AddBusinessForm extends Component {
           </Form.Group>
 
 
-          <Form.Group widths='equal'>  
+          <Form.Group widths='equal'> 
+          <Label as='a' color='black' > Country </Label>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Country"
-                label="Country"
                 name="country"
               />
 
+          <Label as='a' color='black' > City </Label>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="City"
-                label="City"
                 name="city"
               />
           </Form.Group>
 
+          <Label as='a' color='teal' > About </Label>
             <Form.TextArea
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Tell us more about your business..."
-                label="About"
                 name="bio"
               />
 
+          <Label as='a' color='teal' > Promotions </Label>
               <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Promotions"
-                label="Promotions"
                 name="promotions"
               />
-              <Button content="Add Business" value="Add-Business" />
+              <Button content="Add Business" value="Add-Business" color='blue' />
             </Form.Field>
           </Form>
+          </Segment>
         );
     };
 

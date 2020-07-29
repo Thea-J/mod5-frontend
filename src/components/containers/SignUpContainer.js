@@ -27,13 +27,14 @@ class SignUpContainer extends Component {
   render() {
     return (
       <div className="sign-up-container">
-       <Card centered>
+       {/* <Card centered>
           <Card.Content extra>
-            <Icon name="signup" />
           </Card.Content>
           <Card.Content header="Enter Your details" />
+        </Card> */}
+      <Header as='h2' > <Icon name="signup" /> Enter Your details</Header>
+
         <SignUpForm sendSignUpDataToRails={this.sendSignUpDataToRails}/>
-        </Card>
       </div>
     );
   }
