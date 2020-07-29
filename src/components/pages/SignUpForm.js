@@ -17,6 +17,7 @@ class SignUpForm extends Component {
         return (
           <Form className="sign-up-form" onSubmit={this.handleSubmit}>
             <Form.Field required>
+            <Form.Group widths='equal'>
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
@@ -32,7 +33,9 @@ class SignUpForm extends Component {
                 label="Last Name"
                 name="last_name"
               />
+            </Form.Group>
 
+            <Form.Group widths='equal'> 
               <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
@@ -47,7 +50,7 @@ class SignUpForm extends Component {
                 label="Password"
                 name="password_digest"
               />
-
+              </Form.Group>
             {/* <Form.Input
                 onChange={this.handleInputChange}
                 type="text"

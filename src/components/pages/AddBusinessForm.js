@@ -43,6 +43,7 @@ class AddBusinessForm extends Component {
                 name="web_link"
               />
 
+          <Form.Group widths='equal'> 
             <Form.Field label='Sector' control='select' name="sector" onChange={this.handleInputChange}>
                 <option value=''>Choose a Sector</option>
                 <option value='Retail'>Retail</option>
@@ -62,7 +63,7 @@ class AddBusinessForm extends Component {
                 <option value='3'>£551 - £700</option>
                 <option value='4'>£701+</option>
             </Form.Field>
-        
+          </Form.Group>
 
               <Form.Input
                 onChange={this.handleInputChange}
@@ -72,6 +73,7 @@ class AddBusinessForm extends Component {
                 name="promotions"
               />
 
+          <Form.Group widths='equal'>  
             <Form.Input
                 onChange={this.handleInputChange}
                 type="text"
@@ -87,12 +89,12 @@ class AddBusinessForm extends Component {
                 label="City"
                 name="city"
               />
-
+          </Form.Group>
 
             <Form.TextArea
                 onChange={this.handleInputChange}
                 type="text"
-                placeholder="Tell us more about you.."
+                placeholder="Tell us more about your business..."
                 label="About"
                 name="bio"
               />

@@ -29,7 +29,7 @@ class SignUpContainer extends Component {
       <div className="sign-up-container">
        <Card centered>
           <Card.Content extra>
-            <Icon name="" />
+            <Icon name="signup" />
           </Card.Content>
           <Card.Content header="Enter Your details" />
         <SignUpForm sendSignUpDataToRails={this.sendSignUpDataToRails}/>

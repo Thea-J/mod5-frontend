@@ -13,7 +13,8 @@ class HomeContainer extends Component {
   render() {
     return (
       <div className="homeContainer">
-       <Grid container columns={3}>
+      <Header as='h2' >Welcome, Select a Sector!</Header>
+       <Grid container columns={3} centered>
       {this.renderSectorCards()}
       </Grid>
       </div>

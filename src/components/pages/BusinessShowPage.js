@@ -49,7 +49,7 @@ class BusinessShowPage extends Component {
       <div className="business-show-page">
        <Header as='h2'>{this.state.name}</Header>
 
-       <Grid celled='internally'>
+       <Grid celled='internally' centered >
         <Grid.Row>
           <Grid.Column width={5}>
           <Icon name='linkify' />

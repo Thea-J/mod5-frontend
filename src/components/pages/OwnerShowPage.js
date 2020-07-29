@@ -32,9 +32,9 @@ class OwnerShowPage extends Component {
     return (
       <div className="owner-show-page">
        <Header as='h2' > {this.state.first_name} {this.state.last_name}</Header>
-
-       <Grid celled='internally'>
-        <Grid.Row>
+       <Header as='h4' > {this.state.bio} </Header>
+       <Grid celled='internally' container columns={3} centered>
+      
           <Grid.Column width={5}>
           <Icon name='linkify' />
             <a href={this.state.social_media} target="_blank"  rel="noopener noreferrer">
@@ -42,24 +42,17 @@ class OwnerShowPage extends Component {
             </a>
           </Grid.Column>
 
-          <Grid.Column width={5}>
-          <List>
-            <List.Item>
-              <List.Content>{this.state.bio}</List.Content>
-            </List.Item>
-            </List>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row >
-        <Header as='h3' > Businesses: </Header>
-            {this.renderBusinessCards()}
-        </Grid.Row>
 
-        {/* <Grid.Row>
-            //social media
-            {this.state.social_media}
-        </Grid.Row> */}
+        {/* <Grid.Column > */}
+        {/* <Header as='h3' > Businesses: </Header> */}
+            {/* {this.renderBusinessCards()} */}
+        {/* </Grid.Column> */}
+        <Grid.Row container width={5}>
+        {this.renderBusinessCards()}
+        </Grid.Row>
+        
        </Grid>
+
 
       </div>
     );

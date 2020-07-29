@@ -23,7 +23,7 @@ class AddBusinessContainer extends Component {
   render() {
     return (
       <div className="add-business-container">
-       <Header as='h2' >Add Business Container</Header>
+       <Header as='h2' >Add a Business </Header>
        <Card centered>
           <Card.Content extra>
             <Icon name="" />
