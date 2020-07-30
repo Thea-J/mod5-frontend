@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../API";
-import { Header, Image, Grid, List, Icon, Label, Divider } from "semantic-ui-react";
+import { Header, Image, Grid, List, Icon, Label, Divider, Segment } from "semantic-ui-react";
 import {Link} from "react-router-dom";
 
 
@@ -31,10 +31,10 @@ class BusinessShowPage extends Component {
     
     renderPriceRangeSymbol = () => {
       const price = this.state.price_point
-      {if (price == 1) { return <List.Content>£</List.Content>}
-      else if (price == 2) { return <List.Content>££</List.Content>}
-      else if (price == 3) { return <List.Content>£££</List.Content>}
-      else if (price == 4) { return <List.Content>££££</List.Content>}}
+      {if (price == 1) { return "£"}
+      else if (price == 2) { return "££"}
+      else if (price == 3) { return "£££"}
+      else if (price == 4) { return "££££" }}
     }
 
     owner_name = () => { 
@@ -48,58 +48,42 @@ class BusinessShowPage extends Component {
     return (
       <div className="business-show-page">
 
-       <Grid celled='internally' centered >
-        <Grid.Row>
-          {/* <Grid.Column width={5}> */}
-          <Icon name='linkify' />
-            <a href={this.state.web_link} target="_blank" rel="noopener noreferrer">
-                <Image src= {this.state.logo} wrapped ui={false}  />
+<Segment >
+    <Grid columns={2} relaxed='very' stackable>
+      <Grid.Column>
+         <a href={this.state.web_link} target="_blank" rel="noopener noreferrer">
+              <Icon name='linkify' />
+              <Image src= {this.state.logo} wrapped ui={false}  />
             </a>
-          {/* </Grid.Column> */}
+      </Grid.Column>
 
-        <Divider vertical>  
+
+      <Grid.Column verticalAlign='left'>
+       <br/>
+
+          <Header as='h3' > {this.state.bio} </Header>
+
+            <Header as='h3'> 
+              <Icon name='money bill alternate outline' />
+              {this.renderPriceRangeSymbol()}
+              </Header>
+           
+            <Header as='h4' >
+              <Icon name='point' />
+                {this.state.country}, {this.state.city}
+              </Header>
+            
+      </Grid.Column>
+    </Grid>
+
+    <Divider vertical>  
           <Header as='h2' >{this.state.name} </Header>
           <Link to={{pathname:`/business_owners/${this.state.business_owner_id}`}}>
             <Label as='a' color='blue' > {this.owner_name()} </Label>                
           </Link>
         </Divider>
 
-          <Grid.Column width={5}>
-
-          <List>
-            <List.Item>
-              <List.Content>{this.state.bio}</List.Content>
-            </List.Item>
-           
-
-            <List.Item>
-              <List.Icon name='money bill alternate outline' />
-              {this.renderPriceRangeSymbol()}
-              {/* <List.Content>Price Point: {this.state.price_point}</List.Content> */}
-            </List.Item>
-
-            <List.Item>
-              <List.Icon name='point' />
-              <List.Content>
-                {this.state.country}, {this.state.city}
-              </List.Content>
-            </List.Item>
-
-      
-            
-            </List>
-          </Grid.Column>
-        </Grid.Row>
-
-        {/* <Grid.Row>
-             //promo
-            {this.state.promotions}
-        </Grid.Row>
-        <Grid.Row>
-            //social media
-            {this.state.social_media}
-        </Grid.Row> */}
-       </Grid>
+  </Segment>
 
     </div>
     );
