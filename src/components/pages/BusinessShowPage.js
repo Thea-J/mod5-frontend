@@ -50,7 +50,22 @@ class BusinessShowPage extends Component {
 
 <Segment >
     <Grid columns={2} relaxed='very' stackable>
-      <Grid.Column>
+    
+    <Grid.Column>
+      {/* <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/> */}
+     
          <a href={this.state.web_link} target="_blank" rel="noopener noreferrer">
               <Icon name='linkify' />
               <Image src= {this.state.logo} wrapped ui={false}  />
@@ -60,6 +75,16 @@ class BusinessShowPage extends Component {
 
       <Grid.Column verticalAlign='left'>
        <br/>
+       <br/>
+       <br/>
+       {/* <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/> */}
+
 
           <Header as='h3' > {this.state.bio} </Header>
 
